@@ -14,8 +14,8 @@ contract SimpleStorage {
   /**
      * 写入留言的方法
      */
-  function setWord(string s, string t) public {
-    wordArr.push(Message({
+  function setWord(string memory s, string memory t) public {
+    wordAdrr.push(Message({
       word: s,
       from: msg.sender,
       timestamp: t
@@ -25,12 +25,12 @@ contract SimpleStorage {
   /**
      * 获取随机留言的方法
      */
-  function getRandomWord(uint random) public view returns (uint, string, address, string) {
-    if(wordArr.length==0){
+  function getRandomWord(uint random) public view returns (uint, string memory, address, string memory) {
+    if(wordAdrr.length==0){
       return (0, "", msg.sender, "");
     }else{
-      Message storage result = wordArr[random];
-      return (wordArr.length, result.word, result.from, result.timestamp);
+      Message memory result  = wordAdrr[random];
+      return (wordAdrr.length, result.word, result.from, result.timestamp);
     }
   }
 }
